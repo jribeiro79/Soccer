@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/soccer-app/static/js/main.4af3911c.js",
+    "index.html": "/soccer-app/index.html",
+    "main.4af3911c.js.map": "/soccer-app/static/js/main.4af3911c.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.4af3911c.js"
+  ]
+}
