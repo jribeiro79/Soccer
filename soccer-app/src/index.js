@@ -4,14 +4,19 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import App from './App';
-import theme from './theme'; // Importa o tema personalizado
+import theme from './theme';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
+// Render da aplicação
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <CssBaseline />
-    <BrowserRouter>
+    <BrowserRouter basename="/soccer-app">
       <App />
     </BrowserRouter>
   </ThemeProvider>,
   document.getElementById('root')
 );
+
+// Registrar Service Worker
+serviceWorkerRegistration.register();
