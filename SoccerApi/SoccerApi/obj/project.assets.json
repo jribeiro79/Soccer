@@ -1474,11 +1474,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Work\\git\\Projects\\SoccerApi\\SoccerApi\\SoccerApi.csproj",
+      "projectUniqueName": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\SoccerApi.csproj",
       "projectName": "SoccerApi",
-      "projectPath": "C:\\Work\\git\\Projects\\SoccerApi\\SoccerApi\\SoccerApi.csproj",
+      "projectPath": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\SoccerApi.csproj",
       "packagesPath": "C:\\Users\\jcribeiro\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\git\\Projects\\SoccerApi\\SoccerApi\\obj\\",
+      "outputPath": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jcribeiro\\AppData\\Roaming\\NuGet\\NuGet.Config",

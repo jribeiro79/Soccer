@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ok/lDM6Ytjs=",
+  "dgSpecHash": "ouQhHTh8cpA=",
   "success": true,
-  "projectFilePath": "C:\\Work\\git\\Projects\\SoccerApi\\SoccerApi\\SoccerApi.csproj",
+  "projectFilePath": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\SoccerApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jcribeiro\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\jcribeiro\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
