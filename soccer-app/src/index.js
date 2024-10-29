@@ -11,7 +11,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <CssBaseline />
-    <BrowserRouter basename="/soccer-app">
+    <BrowserRouter basename="/soccer">
       <App />
     </BrowserRouter>
   </ThemeProvider>,
