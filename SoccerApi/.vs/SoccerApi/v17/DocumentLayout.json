@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\GDA\\Soccer\\SoccerApi\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C02852DE-F408-473D-88A1-21C69999E4C9}|SoccerApi\\SoccerApi.csproj|c:\\gda\\soccer\\soccerapi\\soccerapi\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C02852DE-F408-473D-88A1-21C69999E4C9}|SoccerApi\\SoccerApi.csproj|solutionrelative:soccerapi\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C02852DE-F408-473D-88A1-21C69999E4C9}|SoccerApi\\SoccerApi.csproj|c:\\gda\\soccer\\soccerapi\\soccerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C02852DE-F408-473D-88A1-21C69999E4C9}|SoccerApi\\SoccerApi.csproj|solutionrelative:soccerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C02852DE-F408-473D-88A1-21C69999E4C9}|SoccerApi\\SoccerApi.csproj|c:\\gda\\soccer\\soccerapi\\soccerapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C02852DE-F408-473D-88A1-21C69999E4C9}|SoccerApi\\SoccerApi.csproj|solutionrelative:soccerapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,6 +67,44 @@
             {
               "$type": "Bookmark",
               "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TeamsController.cs",
+              "DocumentMoniker": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\Controllers\\TeamsController.cs",
+              "RelativeDocumentMoniker": "SoccerApi\\Controllers\\TeamsController.cs",
+              "ToolTip": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\Controllers\\TeamsController.cs",
+              "RelativeToolTip": "SoccerApi\\Controllers\\TeamsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:58:53.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\Program.cs",
+              "RelativeDocumentMoniker": "SoccerApi\\Program.cs",
+              "ToolTip": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\Program.cs",
+              "RelativeToolTip": "SoccerApi\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:52:32.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "SoccerApi\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\Properties\\launchSettings.json",
+              "RelativeToolTip": "SoccerApi\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-30T12:50:47.854Z"
             }
           ]
         }

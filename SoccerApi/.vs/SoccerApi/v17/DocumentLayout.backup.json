@@ -1,7 +1,23 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\GDA\\Soccer\\SoccerApi\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\GDA\\Soccer\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C02852DE-F408-473D-88A1-21C69999E4C9}|SoccerApi\\SoccerApi.csproj|c:\\gda\\soccer\\soccerapi\\soccerapi\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C02852DE-F408-473D-88A1-21C69999E4C9}|SoccerApi\\SoccerApi.csproj|solutionrelative:soccerapi\\controllers\\teamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C02852DE-F408-473D-88A1-21C69999E4C9}|SoccerApi\\SoccerApi.csproj|c:\\gda\\soccer\\soccerapi\\soccerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C02852DE-F408-473D-88A1-21C69999E4C9}|SoccerApi\\SoccerApi.csproj|solutionrelative:soccerapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C02852DE-F408-473D-88A1-21C69999E4C9}|SoccerApi\\SoccerApi.csproj|c:\\gda\\soccer\\soccerapi\\soccerapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C02852DE-F408-473D-88A1-21C69999E4C9}|SoccerApi\\SoccerApi.csproj|solutionrelative:soccerapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +25,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,6 +70,57 @@
             {
               "$type": "Bookmark",
               "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\GDA\\Soccer\\.gitignore",
+              "RelativeDocumentMoniker": "..\\.gitignore",
+              "ToolTip": "C:\\GDA\\Soccer\\.gitignore",
+              "RelativeToolTip": "..\\.gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAALAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAWvSURBVFhHzVjNTxtXEB8MtvGnjLgFqER6a1OQSlOSHlKFU0lDAuE7CCT\u002BANoeWhykXqpAKqWnFYfm0L8hoSQhaS4JlWgPIVHbACYhmA8RPgMO\u002BAObj\u002BfOvH1re\u002B1nY6c95Cd\u002BfrPzdmdnZ\u002BbNvgXeKUSj0Twh6mC1Wl2FhYUOcXgkovyH/6YiL4/h3KbP5wsLTUZIHerq6lKampp6TCYTOS1IM\u002BpN6ZjAaKQ5Vak7hyEDfj8YjcaQ3\u002B///qfr13\u002BZmZkJ8Mlc0dnZqczPz7P9/X3OPY17xD0W4dxnkQiORDrmciQ20vljY2Ps2cQE\u002B\u002B3Bg8DPN258W1FZ6RS3SAuDGKWIR\u002BdoUrS0UZMJVosFPjpxwlpeXv5Dd3f3VydPflrEJ9IgX4w6VFZW1tbU1FQ7HA7weDywsroK6\u002BvrsL6GXF9TZc64vJEwEkOhEGxtboLL5QK73Q5FLpcR6\u002BnjoqIiQzAY/HtpaWlX3E4HqUMVFZW1Z8/WVDudDmCMgQWf0mqxUrEn0BaTLZqOzrGpMjnh29oCm80GuEDAYDCA0\u002Bk0G40FH9odThM6/JfMqTQOVWCEzlY7nE6woWGH3QEULZV2sOPIiXN2nItTzOFITq1hZMkZs9nMHwydykMHLYVm8wezXm9gamrqT3HLGKSrrKOjQ\u002Bnv7\u002B85dqwEHj56CHuRiJjJHsXFxYCrC7xeLxwcHAitCqyv6Ojo6ODNmze/EarMIIfm5ubEilFXTTiR4Th3Ne6G\u002BRgK04jE4y2fjy2vrrHllVXkClteJq6yJ0\u002BfsoZLlxRxOx2kq4wWiLpIooAFCIFAAIIxBrkuGERZR02nzQeBHTIwFhRQL\u002BKkvuYqcoEN60\u002B0qxRIU3b58mXlKqastKQEHo\u002BPw/7eHmq1U9NYygIF6FRV1SewuDAPV/r6Bodu3fpaTGUGOYRFp0\u002BVSJE0VSJdWqpCKdxlodAuCyLpeHp6mtU3NEhTJo1QOzrUfxUjVFoCs7NeODw8RK0\u002BMrEjEhKtSAOoKg35\u002BXD8\u002BPuwgBHqu4IRGkqNkLxTiy5LoLybzEQzynGaNXK9CWVBfm4S8Twjv84krJKLUs/laG9vVzAyPGWx1Ogo0rSLq0qkRUtdPE36VGkkvcczzS7W12efsjZ0qL9/gKfsj7ExwBelmJGUNgmklD6wXkkROnX6M1iYnwM3pmz416HsirqtrU15\u002BfIlL16/P8B2dvxsh0bBbb\u002Bfc4dIc8htKXfYm\u002B04SadGyMMuXLyYSx8ST0ZPzqnGRdVHY2oN8uDQG1/ICSAbtFeK3SMJiXZjaG1tVQYGMGVlZfqUyW0kIf1JlLLqU6dhnvqQ2z14e3g4u5S1oEMzImVascqLNpmpRZzIQDDEx8kpD6uru5B9ynisRUhxi4B9YyHGxaO4mJ6vXr3iNimK6ZZ95h0jEresRzASI25lOVPOiQii/FZobmlRcEPOe448NUQ1PZlSxIlpolRpJN3E1BQ7f74u\u002Bz7U3NyiDFwb6Ckrew\u002BejD8G3OiLGTnSlzEiYVJ9uVbBHPWhXvfg3Tu3U4o6jUPN6NA1dKiMbyOiTH/LjA5wyJd8HrYP2tLiXgvc7l506E527zJuCy2SUQvfJ\u002BP\u002BOYFkNBNpvy3XW7l9QrqHkkaosalJ\u002BREjVIop\u002B3300dsXYxKM2IfOnPkcvHNecH/XOzgycje7PtTY2KQ8f/GCF29KkSYyqWCzIV33bHKS1Z77Moc\u002BlBBQ\u002Bsairwcp13Ljxsa6alStCS4mI0MNEaOw5duC15uv03ATNnOgz\u002Bcjy7njUmOjMv38OQ\u002BvLOz/hWTzH/ze/6L2XI6vDgR\u002B10F\u002BvuF/JdlUIU\u002BZdJXRN1NdXV2P2VyIvvHccb3qJ/0zQTsQbyT84RLuK2hUdUJS/4QdVY9dHu7fGxm8f\u002B9edo0Rv\u002BVduFfm/7ASZoQQO8oI/TWE1OuwlfjD4fAbcfiuAuBflVAvfbIFMC8AAAAASUVORK5CYII=",
+              "WhenOpened": "2024-10-30T13:10:03.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TeamsController.cs",
+              "DocumentMoniker": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\Controllers\\TeamsController.cs",
+              "RelativeDocumentMoniker": "SoccerApi\\Controllers\\TeamsController.cs",
+              "ToolTip": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\Controllers\\TeamsController.cs",
+              "RelativeToolTip": "SoccerApi\\Controllers\\TeamsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:58:53.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\Program.cs",
+              "RelativeDocumentMoniker": "SoccerApi\\Program.cs",
+              "ToolTip": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\Program.cs",
+              "RelativeToolTip": "SoccerApi\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T12:52:32.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "SoccerApi\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\GDA\\Soccer\\SoccerApi\\SoccerApi\\Properties\\launchSettings.json",
+              "RelativeToolTip": "SoccerApi\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-30T12:50:47.854Z"
             }
           ]
         }
