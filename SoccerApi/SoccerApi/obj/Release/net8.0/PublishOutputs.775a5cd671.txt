@@ -1,0 +1,17 @@
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\SoccerApi.exe
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\appsettings.json
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\SoccerApi.dll
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\SoccerApi.deps.json
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\SoccerApi.runtimeconfig.json
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\SoccerApi.pdb
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\DnsClient.dll
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\MongoDB.Bson.dll
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\MongoDB.Driver.dll
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\SharpCompress.dll
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\Snappier.dll
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\GDA\Soccer\SoccerApi\SoccerApi\obj\Release\net8.0\PubTmp\Out\ZstdSharp.dll
