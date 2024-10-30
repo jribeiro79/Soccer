@@ -11,9 +11,12 @@ function GameDetailPage() {
   const [players, setPlayers] = useState({});
   const [convocation, setConvocation] = useState([]);
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     // Fetch game details
-    fetch(`https://localhost:44314/api/games/${gameId}`, {
+    fetch(`${API_URL}/games/${gameId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -28,7 +31,7 @@ function GameDetailPage() {
     .catch(error => console.error('Error fetching game:', error));
 
     // Fetch players
-    fetch(`https://localhost:44314/api/teams/${teamId}/players`, {
+    fetch(`${API_URL}/teams/${teamId}/players`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

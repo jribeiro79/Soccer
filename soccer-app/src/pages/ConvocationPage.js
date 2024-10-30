@@ -8,9 +8,12 @@ function ConvocationPage() {
   const [players, setPlayers] = useState([]);
   const [selectedPlayers, setSelectedPlayers] = useState(new Set());
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+  
   useEffect(() => {
     // Fetch players
-    fetch(`https://localhost:44314/api/teams/${teamId}/players`, {
+    fetch(`${API_URL}/teams/${teamId}/players`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +25,7 @@ function ConvocationPage() {
     .catch(error => console.error('Error fetching players:', error));
 
     // Fetch convocation for the game (if it exists)
-    fetch(`https://localhost:44314/api/games/${gameId}`, {
+    fetch(`${API_URL}/games/${gameId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +55,7 @@ function ConvocationPage() {
 
   const handleSaveConvocation = () => {
     const convocation = Array.from(selectedPlayers);
-    fetch(`https://localhost:44314/api/games/${gameId}/convocation`, {
+    fetch(`${API_URL}/games/${gameId}/convocation`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

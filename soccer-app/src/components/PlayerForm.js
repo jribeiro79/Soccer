@@ -4,11 +4,14 @@ import { TextField, Button } from '@mui/material';
 function PlayerForm({ teamId, onPlayerAdded }) {
   const [name, setName] = useState('');
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const player = { name };
 
-    fetch(`https://localhost:44314/api/teams/${teamId}/players`, {
+    fetch(`${API_URL}/teams/${teamId}/players`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

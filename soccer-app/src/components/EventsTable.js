@@ -8,8 +8,11 @@ function EventsTable({ gameId, showActions = false, onEventRemoved }) {
   useEffect(() => {
     console.log("Game ID:", gameId); // Verificar se o gameId está correto
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+
     // Buscar eventos pelo gameId 
-    fetch(`https://localhost:44314/api/events/game/${gameId}`, {
+    fetch(`${API_URL}/events/game/${gameId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -26,7 +29,7 @@ function EventsTable({ gameId, showActions = false, onEventRemoved }) {
     .catch(error => console.error('Erro ao buscar eventos:', error));
 
     // Buscar todos os jogadores
-    fetch(`https://localhost:44314/api/players`, {
+    fetch(`${API_URL}/players`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +50,10 @@ function EventsTable({ gameId, showActions = false, onEventRemoved }) {
   }, [gameId]);
 
   const handleRemoveEvent = (eventId) => {
-    fetch(`https://localhost:44314/api/events/${eventId}`, {
+    // Importa a variável de ambiente
+    const API_URL = process.env.REACT_APP_API_URL;
+
+    fetch(`${API_URL}/events/${eventId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

@@ -11,11 +11,14 @@ function GamePlayerPage() {
   const [player, setPlayer] = useState(null);
   const refreshEventsRef = useRef(null); // Referência para a função de refresh
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     console.log('Player ID:', playerId); // Verificar se o playerId está correto
     console.log('Game ID:', gameId); // Verificar se o gameId está correto
 
-    fetch(`https://localhost:44314/api/players/${playerId}`, {
+    fetch(`${API_URL}/players/${playerId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

@@ -4,8 +4,11 @@ function PlayerGameStats({ playerId, gameId }) {
   const [events, setEvents] = useState([]);
   const [stats, setStats] = useState({ goals: 0, assists: 0, fouls: 0, sufferedFouls: 0 });
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+  
   useEffect(() => {
-    fetch(`https://localhost:44314/api/events/game/${gameId}/player/${playerId}`, {
+    fetch(`${API_URL}/events/game/${gameId}/player/${playerId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

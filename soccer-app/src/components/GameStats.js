@@ -5,8 +5,11 @@ function GameStats({ gameId }) {
   const [players, setPlayers] = useState(new Map());
   const [stats, setStats] = useState({});
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+  
   useEffect(() => {
-    fetch(`https://localhost:44314/api/events/game/${gameId}`, {
+    fetch(`${API_URL}/events/game/${gameId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +25,7 @@ function GameStats({ gameId }) {
     .then(data => setEvents(data))
     .catch(error => console.error('Erro ao buscar eventos:', error));
 
-    fetch(`https://localhost:44314/api/players`, {
+    fetch(`${API_URL}/players`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

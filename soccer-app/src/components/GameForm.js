@@ -5,11 +5,14 @@ function GameForm({ teamId, onGameCreated }) {
   const [opponent, setOpponent] = useState('');
   const [date, setDate] = useState('');
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const game = { teamId, opponent, date };
 
-    await fetch('https://localhost:44314/api/games', {
+    await fetch(`${API_URL}/games`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

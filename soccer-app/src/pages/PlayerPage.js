@@ -38,8 +38,11 @@ function PlayerPage() {
     { value: 'AT', label: 'AT (Atacante)' },
   ];
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
-    fetch(`https://localhost:44314/api/players/${playerId}`, {
+    fetch(`${API_URL}/players/${playerId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +56,7 @@ function PlayerPage() {
     })
     .catch(error => console.error('Error fetching player:', error));
 
-    fetch(`https://localhost:44314/api/events/player/${playerId}`, {
+    fetch(`${API_URL}/events/player/${playerId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -124,7 +127,7 @@ function PlayerPage() {
   }, [playerId]);
 
   const handlePositionChange = () => {
-    fetch(`https://localhost:44314/api/players/${playerId}`, {
+    fetch(`${API_URL}/players/${playerId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

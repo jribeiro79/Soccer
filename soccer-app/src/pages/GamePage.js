@@ -10,8 +10,11 @@ function GamePage() {
   const [game, setGame] = useState(null);
   const [events, setEvents] = useState([]);
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
-    fetch(`https://localhost:44314/api/games/${gameId}`, {
+    fetch(`${API_URL}/games/${gameId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +35,7 @@ function GamePage() {
   }, [gameId]);
 
   const handleEventAdded = async (newEvent) => {
-    await fetch(`https://localhost:44314/api/games/${gameId}/events`, {
+    await fetch(`${API_URL}/games/${gameId}/events`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +56,7 @@ function GamePage() {
   };
 
   const handleEventRemoved = async (eventId) => {
-    await fetch(`https://localhost:44314/api/events/${eventId}`, {
+    await fetch(`${API_URL}/events/${eventId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -70,7 +73,7 @@ function GamePage() {
   };
 
   const handleStartGame = async () => {
-    await fetch(`https://localhost:44314/api/games/${gameId}/start`, {
+    await fetch(`${API_URL}/games/${gameId}/start`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

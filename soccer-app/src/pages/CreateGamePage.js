@@ -12,7 +12,10 @@ function CreateGamePage() {
     e.preventDefault();
     const game = { teamId, opponentName, gameDate: new Date(gameDate).toISOString() };
 
-    fetch('https://localhost:44314/api/games', {
+    // Importa a variável de ambiente
+    const API_URL = process.env.REACT_APP_API_URL;
+
+    fetch(`${API_URL}/games`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

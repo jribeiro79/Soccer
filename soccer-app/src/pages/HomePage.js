@@ -7,9 +7,12 @@ function HomePage() {
   const navigate = useNavigate();
   const [teams, setTeams] = useState([]);
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     // Fetch the teams
-    fetch('https://localhost:44314/api/teams', {
+    fetch(`${API_URL}/teams`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

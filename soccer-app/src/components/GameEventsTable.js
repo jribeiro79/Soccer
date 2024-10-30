@@ -5,11 +5,14 @@ function GameEventsTable({ gameId }) {
   const [events, setEvents] = useState([]);
   const [players, setPlayers] = useState(new Map());
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+  
   useEffect(() => {
     console.log("Game ID:", gameId); // Verificar se o gameId está correto
 
     // Buscar eventos pelo gameId
-    fetch(`https://localhost:44314/api/events/game/${gameId}`, {
+    fetch(`${API_URL}/events/game/${gameId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -26,7 +29,7 @@ function GameEventsTable({ gameId }) {
     .catch(error => console.error('Erro ao buscar eventos:', error));
 
     // Buscar todos os jogadores
-    fetch(`https://localhost:44314/api/players`, {
+    fetch(`${API_URL}/players`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

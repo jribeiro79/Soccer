@@ -4,12 +4,15 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 function PlayerGameEventsTable({ gameId, playerId, showActions = false, onEventRemoved, refreshEvents }) {
   const [events, setEvents] = useState([]);
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+  
   const fetchEvents = useCallback(() => {
     console.log("Fetching events for Game ID:", gameId); // Verificar se o gameId está correto
     console.log("Fetching events for Player ID:", playerId); // Verificar se o playerId está correto
     
     // Buscar eventos pelo gameId e playerId
-    fetch(`https://localhost:44314/api/events/player/${playerId}?gameId=${gameId}`, {
+    fetch(`${API_URL}/events/player/${playerId}?gameId=${gameId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -37,7 +40,7 @@ function PlayerGameEventsTable({ gameId, playerId, showActions = false, onEventR
   }, [refreshEvents, fetchEvents]);
 
   const handleRemoveEvent = (eventId) => {
-    fetch(`https://localhost:44314/api/events/${eventId}`, {
+    fetch(`${API_URL}/events/${eventId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

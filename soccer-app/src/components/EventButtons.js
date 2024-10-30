@@ -21,7 +21,10 @@ function EventButtons({ playerId, gameId, onEventAdded }) {
       timestamp: new Date().toISOString()
     };
 
-    fetch('https://localhost:44314/api/events', {
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+
+    fetch(`${API_URL}/events`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

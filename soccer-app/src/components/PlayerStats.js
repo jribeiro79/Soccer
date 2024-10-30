@@ -4,10 +4,13 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 function PlayerStats({ gameId, playerId }) {
   const [stats, setStats] = useState({});
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+  
   useEffect(() => {
     console.log(`Fetching stats for player ${playerId} in game ${gameId}`); // Log para verificação
 
-    fetch(`https://localhost:44314/api/events/game/${gameId}/player/${playerId}/stats`, {
+    fetch(`${API_URL}/events/game/${gameId}/player/${playerId}/stats`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

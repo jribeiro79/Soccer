@@ -4,8 +4,11 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 function TeamCumulativeStatsTable({ teamId }) {
   const [stats, setStats] = useState({});
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+  
   useEffect(() => {
-    fetch(`https://localhost:44314/api/teams/${teamId}/cumulative-stats`, {
+    fetch(`${API_URL}/teams/${teamId}/cumulative-stats`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

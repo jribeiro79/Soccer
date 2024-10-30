@@ -12,9 +12,12 @@ function TeamPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('all');
 
+  // Importa a variável de ambiente
+  const API_URL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     // Fetch the team information
-    fetch(`https://localhost:44314/api/teams/${teamId}`, {
+    fetch(`${API_URL}/teams/${teamId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -31,7 +34,7 @@ function TeamPage() {
     .catch(error => console.error('Error fetching team:', error));
 
     // Fetch the games for the team
-    fetch(`https://localhost:44314/api/games/team/${teamId}`, {
+    fetch(`${API_URL}/games/team/${teamId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
