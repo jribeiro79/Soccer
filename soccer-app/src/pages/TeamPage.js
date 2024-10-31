@@ -16,7 +16,7 @@ function TeamPage() {
   const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    // Fetch the team information
+    
     fetch(`${API_URL}/teams/${teamId}`, {
       method: 'GET',
       headers: {
