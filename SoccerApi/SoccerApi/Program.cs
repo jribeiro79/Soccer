@@ -9,7 +9,7 @@ builder.Logging.AddConsole();
 // Configurar CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", builder =>
+    options.AddPolicy("AllowAllOrigins", builder =>
     {
         builder.AllowAnyOrigin()
                .AllowAnyMethod()
