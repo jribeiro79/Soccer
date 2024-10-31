@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { Container, Box, Card, CardContent, Typography, Button, List, ListItem, ListItemText } from '@mui/material';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Button, Typography, Container, List, ListItem, ListItemText, Card, CardContent, Box } from '@mui/material';
-import GamesList from '../components/GamesList'; // Importa o componente GamesList
-import TeamCumulativeStatsTable from '../components/TeamCumulativeStatsTable'; // Importa o componente TeamCumulativeStatsTable
+import { useState, useEffect } from 'react';
+import GamesList from '../components/GamesList';
+import TeamCumulativeStatsTable from '../components/TeamCumulativeStatsTable';
 
 function TeamPage() {
   const { teamId } = useParams();
@@ -82,14 +82,14 @@ function TeamPage() {
       <Button variant="contained" color="primary" onClick={handleAddPlayer}>
         Adicionar Jogador
       </Button>
-      <Box sx={{ display: 'flex', gap: 2, mt: 3 }}>
-        <Card sx={{ flex: 1, border: '1px solid #333' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 3 }}>
+        <Card sx={{ width: '100%' }}>
           <CardContent>
             <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
               Jogadores
             </Typography>
             <List>
-              {filteredPlayers.map(player => (
+              {filteredPlayers.map((player) => (
                 <ListItem key={player.id} component={Link} to={`/player/${player.id}`}>
                   <ListItemText primary={player.name} sx={{ color: '#1976d2', textDecoration: 'underline' }} />
                 </ListItem>
@@ -97,7 +97,7 @@ function TeamPage() {
             </List>
           </CardContent>
         </Card>
-        <Card sx={{ flex: 1, border: '1px solid #333' }}>
+        <Card sx={{ width: '100%' }}>
           <CardContent>
             <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
               Jogos
@@ -105,7 +105,7 @@ function TeamPage() {
             <GamesList games={games} teamId={teamId} />
           </CardContent>
         </Card>
-        <Card sx={{ flex: 1, border: '1px solid #333' }}>
+        <Card sx={{ width: '100%' }}>
           <CardContent>
             <Typography variant="h5" component="h2" sx={{ mb: 2 }}>
               Estatísticas Acumuladas

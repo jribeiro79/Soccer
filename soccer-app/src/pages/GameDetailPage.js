@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Button, Typography, Container, Box, Card, CardContent, List, ListItem, ListItemText } from '@mui/material';
+import { Button, Typography, Container, Box, Card, CardContent, List, ListItem, ListItemText, Grid } from '@mui/material';
 import GameEventsTable from '../components/GameEventsTable';
 import GameStatsTable from '../components/GameStatsTable';
 
@@ -65,42 +65,48 @@ function GameDetailPage() {
           Gerir Convocação
         </Button>
       </Box>
-      <Box sx={{ display: 'flex', gap: 2 }}>
-        <Card sx={{ flex: 1 }}>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
-              Jogadores Convocados
-            </Typography>
-            {convocation.length > 0 ? (
-              <List>
-                {convocation.map(playerId => (
-                  <ListItem key={playerId} component={Link} to={`/game/${gameId}/player/${playerId}`}>
-                    <ListItemText primary={players[playerId] || playerId} sx={{ color: '#1976d2', textDecoration: 'underline' }} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <Typography>Nenhum jogador convocado.</Typography>
-            )}
-          </CardContent>
-        </Card>
-        <Card sx={{ flex: 1 }}>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
-              Histórico de Eventos do Jogo
-            </Typography>
-            <GameEventsTable gameId={gameId} showActions={false} />
-          </CardContent>
-        </Card>
-        <Card sx={{ flex: 1 }}>
-          <CardContent>
-            <Typography variant="h6" gutterBottom>
-            Estatísticas dos Jogadores
-            </Typography>
-            <GameStatsTable gameId={gameId} />
-          </CardContent>
-        </Card>
-      </Box>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={4}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                Jogadores Convocados
+              </Typography>
+              {convocation.length > 0 ? (
+                <List>
+                  {convocation.map(playerId => (
+                    <ListItem key={playerId} component={Link} to={`/game/${gameId}/player/${playerId}`}>
+                      <ListItemText primary={players[playerId] || playerId} sx={{ color: '#1976d2', textDecoration: 'underline' }} />
+                    </ListItem>
+                  ))}
+                </List>
+              ) : (
+                <Typography>Nenhum jogador convocado.</Typography>
+              )}
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                Histórico de Eventos do Jogo
+              </Typography>
+              <GameEventsTable gameId={gameId} showActions={false} />
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                Estatísticas dos Jogadores
+              </Typography>
+              <GameStatsTable gameId={gameId} />
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
     </Container>
   );
 }

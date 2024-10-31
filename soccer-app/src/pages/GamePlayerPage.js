@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Button, Typography, Container, Box, Card, CardContent } from '@mui/material';
+import { Button, Typography, Container, Box, Card, CardContent, Grid } from '@mui/material';
 import EventButtons from '../components/EventButtons';
 import PlayerGameEventsTable from '../components/PlayerGameEventsTable';
 import PlayerStats from '../components/PlayerStats';
@@ -60,26 +60,30 @@ function GamePlayerPage() {
         Retroceder
       </Button>
       <EventButtons playerId={playerId} gameId={gameId} onEventAdded={handleEventAdded} />
-      <Box sx={{ display: 'flex', gap: 2 }}>
-        <Card sx={{ flex: 1 }}>
-          <CardContent>
-            <PlayerGameEventsTable
-              gameId={gameId}
-              playerId={playerId}
-              onEventRemoved={handleEventRemoved}
-              showActions={true}
-              refreshEvents={(ref) => {
-                refreshEventsRef.current = ref;
-              }} // Passar referência para a função de refresh
-            />
-          </CardContent>
-        </Card>
-        <Card sx={{ flex: 1 }}>
-          <CardContent>
-            <PlayerStats playerId={playerId} gameId={gameId} />
-          </CardContent>
-        </Card>
-      </Box>
+      <Grid container spacing={3} sx={{ mt: 3 }}>
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardContent>
+              <PlayerGameEventsTable
+                gameId={gameId}
+                playerId={playerId}
+                onEventRemoved={handleEventRemoved}
+                showActions={true}
+                refreshEvents={(ref) => {
+                  refreshEventsRef.current = ref;
+                }}
+              />
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardContent>
+              <PlayerStats playerId={playerId} gameId={gameId} />
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
     </Container>
   );
 }
