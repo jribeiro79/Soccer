@@ -33,16 +33,20 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
-app.UseCors("AllowAll");  // Usar a política CORS configurada
+app.UseCors("AllowAllOrigins");  // Usar a política CORS configurada
 
+app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllers();
