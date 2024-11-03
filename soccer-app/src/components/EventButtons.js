@@ -57,13 +57,13 @@ function EventButtons({ playerId, gameId, onEventAdded }) {
           Livre Executado
         </Button>
         <Button onClick={() => handleEvent('FreeKickMissed')} variant="contained" sx={{ flex: '1 0 30%', backgroundColor: theme.palette.eventGroups.thirdGroup }}>
-          Livre Desenquadrado
+          Livre Desenquad.
         </Button>
         <Button onClick={() => handleEvent('Corner')} variant="contained" sx={{ flex: '1 0 30%', backgroundColor: theme.palette.eventGroups.thirdGroup }}>
           Canto Executado
         </Button>
         <Button onClick={() => handleEvent('CornerMissed')} variant="contained" sx={{ flex: '1 0 30%', backgroundColor: theme.palette.eventGroups.thirdGroup }}>
-          Canto Desenquadrado
+          Canto Desenquad.
         </Button>
       </Box>
       
