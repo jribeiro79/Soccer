@@ -13,7 +13,9 @@ public class GamesService
     }
 
     public List<Game> GetGamesByTeam(string teamId) =>
-        _games.Find(g => g.TeamId == teamId).ToList();
+        _games.Find(g => g.TeamId == teamId)
+              .SortBy(g => g.GameDate)  // Ordenar por GameDate ascendente
+              .ToList();
 
     public Game GetGame(string id) =>
         _games.Find(g => g.Id == id).FirstOrDefault();

@@ -7,10 +7,10 @@ function ConvocationPage() {
   const navigate = useNavigate();
   const [players, setPlayers] = useState([]);
   const [selectedPlayers, setSelectedPlayers] = useState(new Set());
+  const [saveSuccess, setSaveSuccess] = useState(false);
 
-  // Importa a variável de ambiente
   const API_URL = process.env.REACT_APP_API_URL;
-  
+
   useEffect(() => {
     // Fetch players
     fetch(`${API_URL}/teams/${teamId}/players`, {
@@ -67,8 +67,11 @@ function ConvocationPage() {
       if (!response.ok) {
         throw new Error('Erro ao salvar a convocação.');
       }
-      alert('Convocação salva com sucesso!');
-      navigate(`/team/${teamId}/game/${gameId}`);
+      setSaveSuccess(true);
+      setTimeout(() => {
+        setSaveSuccess(false);
+        navigate(`/team/${teamId}/game/${gameId}`);
+      }, 1000);
     })
     .catch(error => console.error('Erro ao salvar a convocação:', error));
   };
@@ -79,35 +82,40 @@ function ConvocationPage() {
         Convocação para o Jogo
       </Typography>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-        <Card sx={{ flex: 1 }}>
+        <Card>
           <CardContent>
-            {players.length > 0 && (
-              <div>
-                {players.map(player => (
-                  <div key={player.id} style={{ display: 'flex', alignItems: 'center' }}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox 
-                          checked={selectedPlayers.has(player.id)} 
-                          onChange={() => handleCheckboxChange(player.id)} 
-                          name={player.name} 
-                        />
-                      }
-                      label={player.name}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
-            <Button variant="contained" color="primary" onClick={handleSaveConvocation} sx={{ mt: 2 }}>
-              Salvar Convocação
-            </Button>
+            <div>
+              {players.map(player => (
+                <div key={player.id} style={{ display: 'flex', alignItems: 'center' }}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox 
+                        checked={selectedPlayers.has(player.id)} 
+                        onChange={() => handleCheckboxChange(player.id)} 
+                        name={player.name} 
+                      />
+                    }
+                    label={player.name}
+                  />
+                </div>
+              ))}
+            </div>
           </CardContent>
         </Card>
+        </Box>
+      <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
+        <Button variant="contained" color="primary" onClick={handleSaveConvocation}>
+          Gravar
+        </Button>
+        <Button variant="contained" color="secondary" onClick={() => navigate(`/team/${teamId}/game/${gameId}`)}>
+          Retroceder
+        </Button>
       </Box>
-      <Button variant="contained" color="secondary" onClick={() => navigate(-1)} sx={{ mt: 2 }}>
-        Retroceder
-      </Button>
+      {saveSuccess && (
+        <Typography variant="body2" color="success.main" sx={{ mt: 2 }}>
+          Convocação salva com sucesso!
+        </Typography>
+      )}
     </Container>
   );
 }

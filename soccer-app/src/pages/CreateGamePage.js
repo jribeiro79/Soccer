@@ -7,13 +7,13 @@ function CreateGamePage() {
   const navigate = useNavigate();
   const [opponentName, setOpponentName] = useState('');
   const [gameDate, setGameDate] = useState('');
+  const [createSuccess, setCreateSuccess] = useState(false);
+
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const game = { teamId, opponentName, gameDate: new Date(gameDate).toISOString() };
-
-    // Importa a variável de ambiente
-    const API_URL = process.env.REACT_APP_API_URL;
 
     fetch(`${API_URL}/games`, {
       method: 'POST',
@@ -27,10 +27,11 @@ function CreateGamePage() {
       if (!response.ok) {
         throw new Error('Erro ao criar jogo.');
       }
-      return response.json();
-    })
-    .then(() => {
-      navigate(`/team/${teamId}`);
+      setCreateSuccess(true);
+      setTimeout(() => {
+        setCreateSuccess(false);
+        navigate(`/team/${teamId}`);
+      }, 1000);
     })
     .catch(error => console.error('Erro ao criar jogo:', error));
   };
@@ -59,11 +60,16 @@ function CreateGamePage() {
           margin="normal"
         />
         <Button variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
-          Criar Jogo
+          Gravar
         </Button>
-        <Button variant="contained" color="secondary" onClick={() => navigate(-1)} sx={{ mt: 2, ml: 2 }}>
+        <Button variant="contained" color="secondary" onClick={() => navigate(`/team/${teamId}`)} sx={{ mt: 2, ml: 2 }}>
           Retroceder
         </Button>
+        {createSuccess && (
+          <Typography variant="body2" color="success.main" sx={{ mt: 2 }}>
+            Jogo criado com sucesso!
+          </Typography>
+        )}
       </form>
     </Container>
   );

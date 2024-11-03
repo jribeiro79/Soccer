@@ -19,9 +19,11 @@ function App() {
       <Route path="/team/:teamId/add-player" element={<AddPlayerPage />} />
       <Route path="/team/:teamId/game/:gameId" element={<GameDetailPage />} />
       <Route path="/team/:teamId/game/:gameId/convocation" element={<ConvocationPage />} />
+      <Route path="/team/:teamId/game/:gameId/player/:playerId" element={<GamePlayerPage />} />
       <Route path="/game/:gameId/player/:playerId" element={<GamePlayerPage />} />
       <Route path="/player/:playerId" element={<PlayerPage />} /> {/* Nova rota para PlayerPage */}
-      <Route path="/create-team" element={<CreateTeamPage />} />
+      <Route path="/create-team" element={<CreateTeamPage />} />                    
+      <Route path="/team/:teamId/player/:playerId" element={<PlayerPage />} />        
     </Routes>
   );
 }

@@ -8,6 +8,11 @@ const theme = createTheme({
     secondary: {
       main: '#FFFFFF', // Branco para cor secundária
     },
+    eventGroups: {
+      firstGroup: '#e3f2fd', // Azul-claro
+      secondGroup: '#ffcccb', // Cor avermelhada
+      thirdGroup: '#c8e6c9', // Verde um pouco mais escuro
+    },
   },
   typography: {
     fontFamily: 'Roboto, Arial, sans-serif',

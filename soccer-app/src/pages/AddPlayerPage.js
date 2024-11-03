@@ -6,10 +6,10 @@ function AddPlayerPage() {
   const { teamId } = useParams();
   const navigate = useNavigate();
   const [name, setName] = useState('');
+  const [addSuccess, setAddSuccess] = useState(false);
 
-  // Importa a variável de ambiente
   const API_URL = process.env.REACT_APP_API_URL;
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const player = { name };
@@ -26,11 +26,11 @@ function AddPlayerPage() {
       if (!response.ok) {
         throw new Error('Erro ao adicionar jogador.');
       }
-      return response.json();
-    })
-    .then(() => {
-      // Redirecionar de volta para a página de detalhes da equipa
-      navigate(`/team/${teamId}`);
+      setAddSuccess(true);
+      setTimeout(() => {
+        setAddSuccess(false);
+        navigate(`/team/${teamId}`);
+      }, 1000);
     })
     .catch(error => console.error('Erro ao adicionar jogador:', error));
   };
@@ -50,11 +50,16 @@ function AddPlayerPage() {
           margin="normal"
         />
         <Button variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
-          Adicionar Jogador
+          Gravar
         </Button>
-        <Button variant="contained" color="secondary" onClick={() => navigate(-1)} sx={{ mt: 2, ml: 2 }}>
+        <Button variant="contained" color="secondary" onClick={() => navigate(`/team/${teamId}`)} sx={{ mt: 2, ml: 2 }}>
           Retroceder
         </Button>
+        {addSuccess && (
+          <Typography variant="body2" color="success.main" sx={{ mt: 2 }}>
+            Jogador adicionado com sucesso!
+          </Typography>
+        )}
       </form>
     </Container>
   );

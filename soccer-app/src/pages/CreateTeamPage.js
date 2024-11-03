@@ -5,13 +5,13 @@ import { TextField, Button, Typography, Container } from '@mui/material';
 function CreateTeamPage() {
   const navigate = useNavigate();
   const [name, setName] = useState('');
+  const [createSuccess, setCreateSuccess] = useState(false);
+
+  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const team = { name };
-
-  // Importa a variável de ambiente
-  const API_URL = process.env.REACT_APP_API_URL;
 
     fetch(`${API_URL}/teams`, {
       method: 'POST',
@@ -25,11 +25,11 @@ function CreateTeamPage() {
       if (!response.ok) {
         throw new Error('Erro ao criar equipa.');
       }
-      return response.json();
-    })
-    .then(() => {
-      // Redirecionar de volta para a página inicial
-      navigate('/');
+      setCreateSuccess(true);
+      setTimeout(() => {
+        setCreateSuccess(false);
+        navigate('/');
+      }, 1000);  // Redirecionar após 1 segundo
     })
     .catch(error => console.error('Erro ao criar equipa:', error));
   };
@@ -49,11 +49,16 @@ function CreateTeamPage() {
           margin="normal"
         />
         <Button variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
-          Criar Equipa
+          Gravar
         </Button>
         <Button variant="contained" color="secondary" onClick={() => navigate(-1)} sx={{ mt: 2, ml: 2 }}>
           Retroceder
         </Button>
+        {createSuccess && (
+          <Typography variant="body2" color="success.main" sx={{ mt: 2 }}>
+            Equipa criada com sucesso!
+          </Typography>
+        )}
       </form>
     </Container>
   );

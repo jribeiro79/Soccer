@@ -4,13 +4,12 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 function PlayerGameEventsTable({ gameId, playerId, showActions = false, onEventRemoved, refreshEvents }) {
   const [events, setEvents] = useState([]);
 
-  // Importa a variável de ambiente
   const API_URL = process.env.REACT_APP_API_URL;
-  
+
   const fetchEvents = useCallback(() => {
     console.log("Fetching events for Game ID:", gameId); // Verificar se o gameId está correto
     console.log("Fetching events for Player ID:", playerId); // Verificar se o playerId está correto
-    
+
     // Buscar eventos pelo gameId e playerId
     fetch(`${API_URL}/events/player/${playerId}?gameId=${gameId}`, {
       method: 'GET',
@@ -27,15 +26,15 @@ function PlayerGameEventsTable({ gameId, playerId, showActions = false, onEventR
     })
     .then(data => setEvents(data))
     .catch(error => console.error('Erro ao buscar eventos:', error));
-  }, [gameId, playerId]); 
+  }, [gameId, playerId]);
 
   useEffect(() => {
-    fetchEvents(); // Inicialmente carregar eventos
+    fetchEvents();
   }, [fetchEvents]);
 
   useEffect(() => {
     if (refreshEvents) {
-      refreshEvents(fetchEvents); // Vincular função de refresh se passada
+      refreshEvents(fetchEvents);
     }
   }, [refreshEvents, fetchEvents]);
 
@@ -53,7 +52,7 @@ function PlayerGameEventsTable({ gameId, playerId, showActions = false, onEventR
       }
       setEvents(prevEvents => prevEvents.filter(event => event.id !== eventId));
       if (onEventRemoved) {
-        onEventRemoved(eventId);  
+        onEventRemoved(eventId);
       }
     })
     .catch(error => console.error('Erro ao remover evento:', error));
@@ -70,7 +69,7 @@ function PlayerGameEventsTable({ gameId, playerId, showActions = false, onEventR
             <TableRow>
               <TableCell>Evento</TableCell>
               <TableCell>Data</TableCell>
-              {showActions && <TableCell>Ação</TableCell>} {/* Nova Coluna para Ação Condicional */}
+              {showActions && <TableCell>Ação</TableCell>}
             </TableRow>
           </TableHead>
           <TableBody>

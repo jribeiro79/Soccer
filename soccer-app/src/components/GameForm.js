@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { TextField, Button, Container } from '@mui/material';
+import { TextField, Button, Container, Typography } from '@mui/material';
 
 function GameForm({ teamId, onGameCreated }) {
   const [opponent, setOpponent] = useState('');
   const [date, setDate] = useState('');
+  const [createSuccess, setCreateSuccess] = useState(false); // Estado para o feedback de sucesso
 
-  // Importa a variável de ambiente
   const API_URL = process.env.REACT_APP_API_URL;
 
   const handleSubmit = async (e) => {
@@ -24,9 +24,12 @@ function GameForm({ teamId, onGameCreated }) {
       if (!response.ok) {
         throw new Error('Erro ao criar jogo.');
       }
-      return response.json();
+      setCreateSuccess(true);  // Definir sucesso no feedback
+      setTimeout(() => {
+        setCreateSuccess(false);
+        onGameCreated();
+      }, 1000);  // Redirecionar após 1 segundo
     })
-    .then(onGameCreated)
     .catch(error => console.error('Erro ao criar jogo:', error));
   };
 
@@ -56,6 +59,11 @@ function GameForm({ teamId, onGameCreated }) {
         <Button variant="contained" color="primary" type="submit">
           Criar Jogo
         </Button>
+        {createSuccess && (
+          <Typography variant="body2" color="success.main" sx={{ mt: 2 }}>
+            Jogo criado com sucesso!
+          </Typography>
+        )}
       </form>
     </Container>
   );

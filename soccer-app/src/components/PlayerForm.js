@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, Typography } from '@mui/material';
 
 function PlayerForm({ teamId, onPlayerAdded }) {
   const [name, setName] = useState('');
+  const [createSuccess, setCreateSuccess] = useState(false); // Estado para o feedback de sucesso
 
-  // Importa a variável de ambiente
   const API_URL = process.env.REACT_APP_API_URL;
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const player = { name };
@@ -23,11 +23,11 @@ function PlayerForm({ teamId, onPlayerAdded }) {
       if (!response.ok) {
         throw new Error('Erro ao adicionar jogador.');
       }
-      return response.json();
-    })
-    .then(data => {
-      setName('');
-      onPlayerAdded();
+      setCreateSuccess(true);  // Definir sucesso no feedback
+      setTimeout(() => {
+        setCreateSuccess(false);
+        onPlayerAdded();
+      }, 1000);  // Redirecionar após 1 segundo
     })
     .catch(error => console.error('Erro ao adicionar jogador:', error));
   };
@@ -45,6 +45,11 @@ function PlayerForm({ teamId, onPlayerAdded }) {
       <Button variant="contained" color="primary" type="submit">
         Adicionar Jogador
       </Button>
+      {createSuccess && (
+        <Typography variant="body2" color="success.main" sx={{ mt: 2 }}>
+          Jogador adicionado com sucesso!
+        </Typography>
+      )}
     </form>
   );
 }

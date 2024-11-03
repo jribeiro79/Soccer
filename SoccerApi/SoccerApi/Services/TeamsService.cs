@@ -14,7 +14,22 @@ public class TeamsService
 
     public List<Team> Get() => _teams.Find(team => true).ToList();
 
-    public Team Get(string id) => _teams.Find<Team>(team => team.Id == id).FirstOrDefault();
+    public Team Get(string id)
+    {
+        var team = _teams.Find<Team>(team => team.Id == id).FirstOrDefault();
+        if (team != null)
+        {
+            team.Players = team.Players.OrderBy(p => p.Name).ToList();
+        }
+        return team;
+    }
+
+    public List<Player> GetAllPlayers()
+    {
+        var teams = _teams.Find(team => true).ToList();
+        var players = teams.SelectMany(t => t.Players).OrderBy(p => p.Name).ToList();
+        return players;
+    }
 
     public Player GetPlayer(string id)
     {
@@ -28,13 +43,6 @@ public class TeamsService
             }
         }
         return null;
-    }
-
-    public List<Player> GetAllPlayers()
-    {
-        var teams = _teams.Find(team => true).ToList();
-        var players = teams.SelectMany(t => t.Players).ToList();
-        return players;
     }
 
     public Team Create(Team team)

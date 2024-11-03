@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Button, Typography, Container, Box, Card, CardContent, FormControlLabel, Checkbox, Table, TableBody, TableCell, TableHead, TableRow, Grid } from '@mui/material';
+import { Button, Typography, Container, Box, Card, CardContent, FormControlLabel, Checkbox, Grid, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
 
 function PlayerPage() {
-  const { playerId } = useParams();
+  const { playerId, teamId } = useParams();  // Certifique-se que o Router está capturando os IDs
   const navigate = useNavigate();
   const [player, setPlayer] = useState(null);
   const [events, setEvents] = useState([]);
@@ -22,6 +22,7 @@ function PlayerPage() {
     corners: 0,
     penalties: 0,
   });
+  const [updateSuccess, setUpdateSuccess] = useState(false);
 
   const positions = [
     { value: 'GK', label: 'GK (Guarda-redes)' },
@@ -38,7 +39,6 @@ function PlayerPage() {
     { value: 'AT', label: 'AT (Atacante)' },
   ];
 
-  // Importa a variável de ambiente
   const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
@@ -66,7 +66,6 @@ function PlayerPage() {
     .then(response => response.json())
     .then(data => {
       setEvents(data);
-      // Calculate statistics
       const gamesPlayed = new Set(data.map(event => event.gameId)).size;
       const stats = data.reduce((acc, event) => {
         switch (event.type) {
@@ -139,7 +138,8 @@ function PlayerPage() {
       if (!response.ok) {
         throw new Error('Erro ao atualizar as posições preferenciais.');
       }
-      alert('Posições preferenciais atualizadas com sucesso!');
+      setUpdateSuccess(true);  // Definir sucesso no feedback
+      setTimeout(() => setUpdateSuccess(false), 1000);  // Remover mensagem após 1 segundo
     })
     .catch(error => console.error('Erro ao atualizar as posições preferenciais:', error));
   };
@@ -161,9 +161,14 @@ function PlayerPage() {
       <Typography variant="h4" component="h1" gutterBottom>
         {player.name}
       </Typography>
-      <Button variant="contained" color="secondary" onClick={() => navigate(-1)} sx={{ mb: 2 }}>
-        Retroceder
-      </Button>
+      <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+        <Button variant="contained" color="secondary" onClick={() => navigate(`/team/${teamId}`)}>
+          Retroceder
+        </Button>
+        <Button variant="contained" color="primary" onClick={handlePositionChange}>
+          Gravar
+        </Button>
+      </Box>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Card>
@@ -185,9 +190,11 @@ function PlayerPage() {
                   />
                 ))}
               </Box>
-              <Button variant="contained" color="primary" onClick={handlePositionChange} sx={{ mt: 2 }}>
-                Atualizar Posição
-              </Button>
+              {updateSuccess && (
+                <Typography variant="body2" color="success.main" sx={{ mt: 2 }}>
+                  Posições preferenciais atualizadas com sucesso!
+                </Typography>
+              )}
             </CardContent>
           </Card>
         </Grid>
@@ -205,54 +212,12 @@ function PlayerPage() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  <TableRow>
-                    <TableCell>Nº Jogos realizados</TableCell>
-                    <TableCell align="right">{stats.gamesPlayed}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Golos Marcados</TableCell>
-                    <TableCell align="right">{stats.goals}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Assistências</TableCell>
-                    <TableCell align="right">{stats.assists}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Golos Sofridos</TableCell>
-                    <TableCell align="right">{stats.goalsConceded}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Cartões Amarelos</TableCell>
-                    <TableCell align="right">{stats.yellowCards}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Cartões Vermelhos</TableCell>
-                    <TableCell align="right">{stats.redCards}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Defesas</TableCell>
-                    <TableCell align="right">{stats.saves}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Remates Enquadrados</TableCell>
-                    <TableCell align="right">{stats.shotsOnTarget}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Remates Fora</TableCell>
-                    <TableCell align="right">{stats.shotsOffTarget}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Livres Executados</TableCell>
-                    <TableCell align="right">{stats.freeKicks}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Cantos Executados</TableCell>
-                    <TableCell align="right">{stats.corners}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Penaltis Executados</TableCell>
-                    <TableCell align="right">{stats.penalties}</TableCell>
-                  </TableRow>
+                  {Object.entries(stats).map(([key, value]) => (
+                    <TableRow key={key}>
+                      <TableCell>{key}</TableCell>
+                      <TableCell align="right">{value}</TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </CardContent>
