@@ -20,8 +20,7 @@ const InstallButton = () => {
       setDeferredPrompt(e);
 
       // Verificar se o dispositivo é móvel
-      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
-          && !window.matchMedia('(display-mode: standalone)').matches) {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         setIsMobile(true);
       }
     };
