@@ -1,18 +1,20 @@
-import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider, Button } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
-import App from './App';
-import theme from './theme';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import React, { useEffect, useState } from 'react';
+import { Button, Typography } from '@mui/material';
 
-// Registrar Service Worker
-serviceWorkerRegistration.register();
+// Detectar se o dispositivo é um iPhone ou iPad e se está a usar o Safari
+const isIOS = () => {
+  return (
+    /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+  );
+};
+
+const isInStandaloneMode = () => {
+  return (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone);
+};
 
 const InstallButton = () => {
-  const [deferredPrompt, setDeferredPrompt] = React.useState(null);
-  const [isMobile, setIsMobile] = React.useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e) => {
@@ -25,16 +27,10 @@ const InstallButton = () => {
       }
     };
 
-    const handleAppInstalled = () => {
-      console.log('PWA was installed');
-    };
-
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    window.addEventListener('appinstalled', handleAppInstalled);
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-      window.removeEventListener('appinstalled', handleAppInstalled);
     };
   }, []);
 
@@ -51,6 +47,14 @@ const InstallButton = () => {
       });
     }
   };
+
+  if (isIOS() && !isInStandaloneMode()) {
+    return (
+      <Typography variant="body1" sx={{ position: 'absolute', top: 10, right: 10 }}>
+        Para instalar esta aplicação, toque no botão de partilha e selecione "Adicionar à Tela de Início".
+      </Typography>
+    );
+  }
 
   if (!deferredPrompt || !isMobile) {
     return null;
@@ -69,14 +73,4 @@ const InstallButton = () => {
   );
 };
 
-// Render da aplicação
-ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <CssBaseline />
-    <BrowserRouter basename="/soccer">
-      <InstallButton />
-      <App />
-    </BrowserRouter>
-  </ThemeProvider>,
-  document.getElementById('root')
-);
+export default InstallButton;
