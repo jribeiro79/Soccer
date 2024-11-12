@@ -31,7 +31,7 @@ function HomePage() {
   return (
     <Container>
       <Typography variant="h2" component="h1" gutterBottom>
-        Soccer App
+        Soccer App Stats
       </Typography>
       <Button variant="contained" color="primary" onClick={handleCreateTeam} sx={{ my: 2 }}>
         Criar Equipa

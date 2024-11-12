@@ -64,7 +64,7 @@ function TeamPage() {
       <Typography variant="h3" component="h1" gutterBottom>
         {team.name}
       </Typography>
-      <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+      <Box sx={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: 'white', padding: 2, display: 'flex', gap: 2, mb: 2 }}>
         <Button variant="contained" color="secondary" onClick={() => navigate('/')}>
           Retroceder
         </Button>

@@ -15,7 +15,7 @@ function GameDetailPage() {
 
   const API_URL = process.env.REACT_APP_API_URL;
 
-  useEffect(() => {   
+  useEffect(() => {
     console.log(`Fetching game details for gameId: ${gameId}`);
     console.log(`Fetching players for teamId: ${teamId}`);
     
@@ -87,6 +87,14 @@ function GameDetailPage() {
       <Typography variant="h4" component="h1" gutterBottom>
         Jogo Contra: {game?.opponentName}
       </Typography>
+      <Box sx={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: 'white', padding: 2, display: 'flex', gap: 2, mb: 2 }}>
+        <Button variant="contained" color="secondary" onClick={() => navigate(`/team/${teamId}`)}>
+          Retroceder
+        </Button>
+        <Button variant="contained" color="primary" onClick={() => navigate(`/team/${teamId}/game/${gameId}/convocation`)}>
+          Gerir Convocação
+        </Button>
+      </Box>
       <Box display="flex" justifyContent="space-between" alignItems="center" width="100%" mb={2}>
         <Typography variant="h5">
           Data: {new Date(game?.gameDate).toLocaleString()}
@@ -95,17 +103,16 @@ function GameDetailPage() {
           GDA {result.homeGoals} - {result.awayGoals} {game?.opponentName}
         </Typography>
       </Box>
-      <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
-        <Button variant="contained" color="secondary" onClick={() => navigate(`/team/${teamId}`)}>
-          Retroceder
-        </Button>
-        <Button variant="contained" color="primary" onClick={() => navigate(`/team/${teamId}/game/${gameId}/convocation`)}>
-          Gerir Convocação
-        </Button>
-      </Box>
       <Grid container spacing={3}>
         <Grid item xs={12} md={4}>
           <ConvocationList convocation={sortedConvocation} players={players} gameId={gameId} teamId={teamId} />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Card>
+            <CardContent>
+              <GameSummary gameId={gameId} />
+            </CardContent>
+          </Card>
         </Grid>
         <Grid item xs={12} md={4}>
           <Card>
@@ -114,13 +121,6 @@ function GameDetailPage() {
                 Histórico de Eventos do Jogo
               </Typography>
               <GameEventsTable gameId={gameId} showActions={false} />
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Card>
-            <CardContent>
-              <GameSummary gameId={gameId} />
             </CardContent>
           </Card>
         </Grid>

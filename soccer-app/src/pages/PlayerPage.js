@@ -161,7 +161,7 @@ function PlayerPage() {
       <Typography variant="h4" component="h1" gutterBottom>
         {player.name}
       </Typography>
-      <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+      <Box sx={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: 'white', padding: 2, display: 'flex', gap: 2, mb: 2 }}>
         <Button variant="contained" color="secondary" onClick={() => navigate(`/team/${teamId}`)}>
           Retroceder
         </Button>

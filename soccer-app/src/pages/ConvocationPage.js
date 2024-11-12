@@ -81,6 +81,14 @@ function ConvocationPage() {
       <Typography variant="h4" component="h1" gutterBottom>
         Convocação para o Jogo
       </Typography>
+      <Box sx={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: 'white', padding: 2, display: 'flex', gap: 2, mb: 2 }}>
+        <Button variant="contained" color="primary" onClick={handleSaveConvocation}>
+          Gravar
+        </Button>
+        <Button variant="contained" color="secondary" onClick={() => navigate(`/team/${teamId}/game/${gameId}`)}>
+          Retroceder
+        </Button>
+      </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         <Card>
           <CardContent>
@@ -102,20 +110,12 @@ function ConvocationPage() {
             </div>
           </CardContent>
         </Card>
-        </Box>
-      <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
-        <Button variant="contained" color="primary" onClick={handleSaveConvocation}>
-          Gravar
-        </Button>
-        <Button variant="contained" color="secondary" onClick={() => navigate(`/team/${teamId}/game/${gameId}`)}>
-          Retroceder
-        </Button>
+        {saveSuccess && (
+          <Typography variant="body2" color="success.main" sx={{ mt: 2 }}>
+            Convocação salva com sucesso!
+          </Typography>
+        )}
       </Box>
-      {saveSuccess && (
-        <Typography variant="body2" color="success.main" sx={{ mt: 2 }}>
-          Convocação salva com sucesso!
-        </Typography>
-      )}
     </Container>
   );
 }

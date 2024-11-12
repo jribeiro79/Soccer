@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Typography } from '@mui/material';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider, Button, Typography } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+import App from './App';
+import theme from './theme';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
+// Registrar Service Worker
+serviceWorkerRegistration.register();
 
 // Detectar se o dispositivo é um iPhone ou iPad e se está a usar o Safari
 const isIOS = () => {
@@ -72,5 +81,17 @@ const InstallButton = () => {
     </Button>
   );
 };
+
+// Render da aplicação
+ReactDOM.render(
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <BrowserRouter basename="/soccer">
+      <InstallButton />
+      <App />
+    </BrowserRouter>
+  </ThemeProvider>,
+  document.getElementById('root')
+);
 
 export default InstallButton;

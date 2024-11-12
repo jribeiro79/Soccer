@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TextField, Button, Typography, Container } from '@mui/material';
+import { TextField, Button, Typography, Container, Box } from '@mui/material';
 
 function CreateTeamPage() {
   const navigate = useNavigate();
@@ -39,7 +39,15 @@ function CreateTeamPage() {
       <Typography variant="h3" component="h1" gutterBottom>
         Criar Equipa
       </Typography>
-      <form onSubmit={handleSubmit}>
+      <Box sx={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: 'white', padding: 2, display: 'flex', gap: 2, mb: 2 }}>
+        <Button variant="contained" color="secondary" onClick={() => navigate(-1)}>
+          Retroceder
+        </Button>
+        <Button variant="contained" color="primary" type="submit" form="create-team-form">
+          Gravar
+        </Button>
+      </Box>
+      <form id="create-team-form" onSubmit={handleSubmit}>
         <TextField
           label="Nome da Equipa"
           value={name}
@@ -48,12 +56,6 @@ function CreateTeamPage() {
           fullWidth
           margin="normal"
         />
-        <Button variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
-          Gravar
-        </Button>
-        <Button variant="contained" color="secondary" onClick={() => navigate(-1)} sx={{ mt: 2, ml: 2 }}>
-          Retroceder
-        </Button>
         {createSuccess && (
           <Typography variant="body2" color="success.main" sx={{ mt: 2 }}>
             Equipa criada com sucesso!

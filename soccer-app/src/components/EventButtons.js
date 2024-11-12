@@ -62,8 +62,14 @@ function EventButtons({ playerId, gameId, onEventAdded }) {
         <Button onClick={() => handleEvent('Corner')} variant="contained" sx={{ flex: '1 0 30%', backgroundColor: theme.palette.eventGroups.thirdGroup }}>
           Canto Executado
         </Button>
-        <Button onClick={() => handleEvent('CornerMissed')} variant="contained" sx={{ flex: '1 0 30%', backgroundColor: theme.palette.eventGroups.thirdGroup }}>
-          Canto Desenquad.
+        <Button onClick={() => handleEvent('Offside')} variant="contained" sx={{ flex: '1 0 30%', backgroundColor: theme.palette.eventGroups.thirdGroup }}>
+          Fora Jogo
+        </Button>
+        <Button onClick={() => handleEvent('BallRecovery')} variant="contained" sx={{ flex: '1 0 30%', backgroundColor: theme.palette.eventGroups.thirdGroup }}>
+          Recuperação Bola
+        </Button>
+        <Button onClick={() => handleEvent('Interception')} variant="contained" sx={{ flex: '1 0 30%', backgroundColor: theme.palette.eventGroups.thirdGroup }}>
+          Corte
         </Button>
       </Box>
       

@@ -58,11 +58,20 @@ function GamePlayerPage() {
       <Typography variant="h4" component="h1" gutterBottom>
         {player.name}
       </Typography>
-      <Button variant="contained" color="secondary" onClick={() => navigate(`/team/${teamId}/game/${gameId}`)} sx={{ mb: 2 }}>
-        Retroceder
-      </Button>
+      <Box sx={{ position: 'sticky', top: 0, zIndex: 1, backgroundColor: 'white', padding: 2, display: 'flex', gap: 2, mb: 2 }}>
+        <Button variant="contained" color="secondary" onClick={() => navigate(`/team/${teamId}/game/${gameId}`)} sx={{ mb: 2 }}>
+          Retroceder
+        </Button>
+      </Box>
       <EventButtons playerId={playerId} gameId={gameId} onEventAdded={handleEventAdded} />
       <Grid container spacing={3} sx={{ mt: 3 }}>
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardContent>
+              <PlayerStats playerId={playerId} gameId={gameId} />
+            </CardContent>
+          </Card>
+        </Grid>
         <Grid item xs={12} md={6}>
           <Card>
             <CardContent>
@@ -75,13 +84,6 @@ function GamePlayerPage() {
                   refreshEventsRef.current = ref;
                 }}
               />
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <PlayerStats playerId={playerId} gameId={gameId} />
             </CardContent>
           </Card>
         </Grid>
