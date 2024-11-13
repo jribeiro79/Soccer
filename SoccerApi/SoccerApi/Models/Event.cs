@@ -11,7 +11,10 @@ public class Event
     public string PlayerId { get; set; }
 
     [BsonElement("gameId")]
-    public string GameId { get; set; }  // Adicionar Propriedade GameId
+    public string GameId { get; set; }
+
+    [BsonElement("teamId")]
+    public string TeamId { get; set; }  // Adicionar Propriedade TeamId
 
     [BsonElement("type")]
     public string Type { get; set; }

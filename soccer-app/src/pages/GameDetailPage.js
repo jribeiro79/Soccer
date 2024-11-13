@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button, Typography, Container, Box, Card, CardContent, Grid } from '@mui/material';
 import GameEventsTable from '../components/GameEventsTable';
-import GameSummary from '../components/GameSummary';
 import ConvocationList from '../components/ConvocationList';
+import GameSummary from '../components/GameSummary';
 
 function GameDetailPage() {
   const { teamId, gameId } = useParams();
@@ -96,9 +96,7 @@ function GameDetailPage() {
         </Button>
       </Box>
       <Box display="flex" justifyContent="space-between" alignItems="center" width="100%" mb={2}>
-        <Typography variant="h5">
-          Data: {new Date(game?.gameDate).toLocaleString()}
-        </Typography>
+        <Typography variant="h5">Data: {new Date(game?.gameDate).toLocaleString()}</Typography>
         <Typography variant="h5">
           GDA {result.homeGoals} - {result.awayGoals} {game?.opponentName}
         </Typography>

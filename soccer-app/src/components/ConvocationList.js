@@ -15,7 +15,7 @@ function ConvocationList({ convocation, players, gameId, teamId }) {
         {sortedConvocation.length > 0 ? (
           <List>
             {sortedConvocation.map((playerId) => (
-              <ListItem key={playerId} button component={Link} to={`/team/${teamId}/game/${gameId}/player/${playerId}`}>
+              <ListItem key={playerId} component={Link} to={`/team/${teamId}/game/${gameId}/player/${playerId}`} button="true">
                 <ListItemText primary={players[playerId] || playerId} sx={{ color: '#1976d2', textDecoration: 'underline' }} />
               </ListItem>
             ))}

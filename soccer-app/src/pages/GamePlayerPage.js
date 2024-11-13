@@ -63,7 +63,7 @@ function GamePlayerPage() {
           Retroceder
         </Button>
       </Box>
-      <EventButtons playerId={playerId} gameId={gameId} onEventAdded={handleEventAdded} />
+      <EventButtons playerId={playerId} gameId={gameId} teamId={teamId} onEventAdded={handleEventAdded} />
       <Grid container spacing={3} sx={{ mt: 3 }}>
         <Grid item xs={12} md={6}>
           <Card>

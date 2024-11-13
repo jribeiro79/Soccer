@@ -1,13 +1,14 @@
 import React from 'react';
 import { Button, Box, Divider, useTheme } from '@mui/material';
 
-function EventButtons({ playerId, gameId, onEventAdded }) {
+function EventButtons({ playerId, gameId, teamId, onEventAdded }) {
   const theme = useTheme();
 
   const handleEvent = (type) => {
     const event = {
       playerId,
       gameId,
+      teamId,
       type,
       timestamp: new Date().toISOString()
     };

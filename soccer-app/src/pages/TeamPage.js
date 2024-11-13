@@ -9,9 +9,6 @@ function TeamPage() {
   const navigate = useNavigate();
   const [team, setTeam] = useState(null);
   const [games, setGames] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filter, setFilter] = useState('all');
-
   const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
@@ -46,15 +43,6 @@ function TeamPage() {
     navigate(`/team/${teamId}/add-player`);
   };
 
-  const filteredPlayers = team && team.players
-    ? team.players.filter((player) =>
-        (filter === 'all' || player.position === filter) &&
-        player.name.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    : [];
-
-  const sortedPlayers = filteredPlayers.sort((a, b) => a.name.localeCompare(b.name));
-
   if (!team) {
     return <div>Loading...</div>;
   }
@@ -83,7 +71,7 @@ function TeamPage() {
                 Jogadores
               </Typography>
               <List>
-                {sortedPlayers.map((player) => (
+                {team.players.sort((a, b) => a.name.localeCompare(b.name)).map((player) => (
                   <ListItem key={player.id} component={Link} to={`/team/${teamId}/player/${player.id}`}>
                     <ListItemText primary={player.name} sx={{ color: '#1976d2', textDecoration: 'underline' }} />
                   </ListItem>

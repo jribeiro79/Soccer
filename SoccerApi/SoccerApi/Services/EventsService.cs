@@ -4,12 +4,14 @@ using MongoDB.Driver;
 public class EventsService
 {
     private readonly IMongoCollection<Event> _events;
+    private readonly TeamsService _teamsService;
 
-    public EventsService(IOptions<DatabaseSettings> settings)
+    public EventsService(IOptions<DatabaseSettings> settings, TeamsService teamsService)
     {
         var client = new MongoClient(settings.Value.SoccerDb);
         var database = client.GetDatabase(settings.Value.DatabaseName);
         _events = database.GetCollection<Event>("Events");
+        _teamsService = teamsService;
     }
 
     public List<Event> GetEventsByPlayer(string playerId) =>
@@ -33,16 +35,56 @@ public class EventsService
     public void DeleteEvent(string id) =>
         _events.DeleteOne(ev => ev.Id == id);
 
-    public Dictionary<string, Dictionary<string, int>> GetGameStats(string gameId)
+    public Dictionary<string, List<PlayerEventCount>> GetGameEventDetails(string gameId)
     {
         var events = GetEventsByGame(gameId);
-        var stats = events.GroupBy(e => e.PlayerId)
-                          .ToDictionary(
-                              g => g.Key,
-                              g => g.GroupBy(e => e.Type)
-                                    .ToDictionary(gg => gg.Key, gg => gg.Count())
-                          );
 
-        return stats;
+        var details = events
+            .GroupBy(e => e.Type)
+            .ToDictionary(
+                g => g.Key,
+                g => g.GroupBy(e => e.PlayerId)
+                      .Select(p => new PlayerEventCount
+                      {
+                          PlayerId = p.Key,
+                          PlayerName = p.First().PlayerId,
+                          Count = p.Count()
+                      }).ToList()
+            );
+
+        return details;
+    }
+
+    public List<string> GetDistinctEventTypesByGame(string gameId)
+    {
+        return _events
+            .Find(e => e.GameId == gameId)
+            .Project(e => e.Type)
+            .ToEnumerable()
+            .Distinct()
+            .ToList();
+    }
+
+    public Dictionary<string, List<PlayerEventCount>> GetPlayerEventDetailsByGame(string gameId)
+    {
+        var events = GetEventsByGame(gameId);
+        var teamId = events.FirstOrDefault()?.TeamId;
+
+        var players = _teamsService.GetPlayerNamesByTeamId(teamId);
+
+        var details = events
+            .GroupBy(e => e.Type)
+            .ToDictionary(
+                g => g.Key,
+                g => g.GroupBy(e => e.PlayerId)
+                      .Select(p => new PlayerEventCount
+                      {
+                          PlayerId = p.Key,
+                          PlayerName = players.ContainsKey(p.Key) ? players[p.Key] : "Unknown",
+                          Count = p.Count()
+                      }).ToList()
+            );
+
+        return details;
     }
 }

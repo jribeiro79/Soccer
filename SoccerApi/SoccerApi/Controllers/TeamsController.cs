@@ -98,4 +98,13 @@ public class TeamsController : ControllerBase
 
         return stats;
     }
+
+    [HttpGet("{id:length(24)}/event-details")]
+    public ActionResult<Dictionary<string, List<PlayerEventCount>>> GetEventDetails(string id)
+    {
+        var eventDetails = _teamsService.GetEventDetails(id);
+        if (eventDetails == null) return NotFound();
+
+        return eventDetails;
+    }
 }

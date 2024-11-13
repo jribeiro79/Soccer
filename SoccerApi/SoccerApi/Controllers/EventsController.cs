@@ -94,4 +94,37 @@ public class EventsController : ControllerBase
 
         return stats;
     }
+
+    [HttpGet("game/{gameId}/details")]
+    public ActionResult<Dictionary<string, List<PlayerEventCount>>> GetGameEventDetails(string gameId)
+    {
+        var gameEventDetails = _eventsService.GetGameEventDetails(gameId);
+        if (gameEventDetails == null) return NotFound();
+
+        return gameEventDetails;
+    }
+
+    [HttpGet("game/{gameId}/distinct-event-types")]
+    public ActionResult<List<string>> GetDistinctEventTypesByGame(string gameId)
+    {
+        var eventTypes = _eventsService.GetDistinctEventTypesByGame(gameId);
+        if (eventTypes == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(eventTypes);
+    }
+
+    [HttpGet("game/{gameId}/player-event-details")]
+    public ActionResult<Dictionary<string, List<PlayerEventCount>>> GetPlayerEventDetailsByGame(string gameId)
+    {
+        var eventDetails = _eventsService.GetPlayerEventDetailsByGame(gameId);
+        if (eventDetails == null)
+        {
+            return NotFound();
+        }
+
+        return eventDetails;
+    }
 }
