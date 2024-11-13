@@ -204,6 +204,105 @@
         }
       }
     },
+    "/api/Events/game/{gameId}/details": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gameId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/PlayerEventCount"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Events/game/{gameId}/distinct-event-types": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gameId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Events/game/{gameId}/player-event-details": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "gameId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/PlayerEventCount"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Games/team/{teamId}": {
       "get": {
         "tags": [
@@ -669,6 +768,42 @@
           }
         }
       }
+    },
+    "/api/Teams/{id}/event-details": {
+      "get": {
+        "tags": [
+          "Teams"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "maxLength": 24,
+            "minLength": 24
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/PlayerEventCount"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -682,6 +817,9 @@
           "type": "string"
         },
         "gameId": {
+          "type": "string"
+        },
+        "teamId": {
           "type": "string"
         },
         "type": {
@@ -736,6 +874,22 @@
           "items": {
             "type": "string"
           }
+        }
+      },
+      "additionalProperties": false
+    },
+    "PlayerEventCount": {
+      "type": "object",
+      "properties": {
+        "playerId": {
+          "type": "string"
+        },
+        "playerName": {
+          "type": "string"
+        },
+        "count": {
+          "format": "int32",
+          "type": "integer"
         }
       },
       "additionalProperties": false

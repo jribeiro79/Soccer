@@ -8,7 +8,13 @@ public class TeamsService
 
     public TeamsService(IOptions<DatabaseSettings> settings)
     {
-        var client = new MongoClient(settings.Value.SoccerDb);
+        bool isDebug = false;
+
+        #if DEBUG
+                isDebug = true;
+        #endif
+
+        var client = new MongoClient(isDebug ? settings.Value.SoccerDbDev : settings.Value.SoccerDb);
         var database = client.GetDatabase(settings.Value.DatabaseName);
         _teams = database.GetCollection<Team>(settings.Value.TeamsCollectionName);
         _events = database.GetCollection<Event>("Events");
