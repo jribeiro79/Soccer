@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using System.Diagnostics;
 
 public class EventsService
 {
@@ -9,14 +8,14 @@ public class EventsService
 
     public EventsService(IOptions<DatabaseSettings> settings, TeamsService teamsService)
     {
-        //bool isDebug = false;
+        bool isDebug = false;
 
-        //#if DEBUG
-        //        isDebug = true;
-        //#endif
+#if DEBUG
+                isDebug = true;
+#endif
 
-        //var client = new MongoClient(isDebug ? settings.Value.SoccerDbDev : settings.Value.SoccerDb);
-        var client = new MongoClient(settings.Value.SoccerDb);
+        var client = new MongoClient(isDebug ? settings.Value.SoccerDbDev : settings.Value.SoccerDb);
+        //var client = new MongoClient(settings.Value.SoccerDb);
         var database = client.GetDatabase(settings.Value.DatabaseName);
         _events = database.GetCollection<Event>("Events");
         _teamsService = teamsService;
