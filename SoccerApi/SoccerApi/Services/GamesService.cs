@@ -9,11 +9,12 @@ public class GamesService
     {
         bool isDebug = false;
 
-        #if DEBUG
+#if DEBUG
                 isDebug = true;
-        #endif
+#endif
 
         var client = new MongoClient(isDebug ? settings.Value.SoccerDbDev : settings.Value.SoccerDb);
+        //var client = new MongoClient(settings.Value.SoccerDb);
         var database = client.GetDatabase(settings.Value.DatabaseName);
         _games = database.GetCollection<Game>("Games");
     }

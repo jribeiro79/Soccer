@@ -32,19 +32,23 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//    app.UseSwagger();
-//    app.UseSwaggerUI();
-//}
+app.Use(async (context, next) =>
+{
+    await next();
+    if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
+    {
+        context.Request.Path = "/index.html";
+        await next();
+    }
+});
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseCors("AllowAllOrigins");  // Usar a política CORS configurada
+app.UseCors("AllowAllOrigins");
 
 app.UseRouting();
 app.UseAuthorization();

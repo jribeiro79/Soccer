@@ -1489,7 +1489,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://pkgs.dev.azure.com/Whitestar-AssetSolutions/5f307ace-a257-4b61-ab6a-307889c49dd4/_packaging/GalaxySharedPackages/nuget/v3/index.json": {}
       },
@@ -1546,16 +1545,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://pkgs.dev.azure.com/Whitestar-AssetSolutions/5f307ace-a257-4b61-ab6a-307889c49dd4/_packaging/GalaxySharedPackages/nuget/v3/index.json."
-    }
-  ]
+  }
 }
