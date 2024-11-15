@@ -24,11 +24,15 @@ jobs:
     - name: Install dependencies
       run: npm install
       working-directory: ./Soccer
+      env: 
+        NODE_ENV: production
 
     # Constrói o projeto
     - name: Build project
       run: npm run build
       working-directory: ./Soccer
+      env: 
+        NODE_ENV: production
 
     # Publica no GitHub Pages
     - name: Deploy to GitHub Pages
