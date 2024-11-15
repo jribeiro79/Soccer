@@ -5,8 +5,7 @@ import { Button, Typography, Container, Box, Card, CardContent, FormControlLabel
 function PlayerPage() {
   const { playerId, teamId } = useParams();  // Certifique-se que o Router está capturando os IDs
   const navigate = useNavigate();
-  const [player, setPlayer] = useState(null);
-  const [events, setEvents] = useState([]);
+  const [player, setPlayer] = useState(null);  
   const [selectedPositions, setSelectedPositions] = useState([]);
   const [stats, setStats] = useState({
     gamesPlayed: 0,
@@ -64,8 +63,7 @@ function PlayerPage() {
       }
     })
     .then(response => response.json())
-    .then(data => {
-      setEvents(data);
+    .then(data => {      
       const gamesPlayed = new Set(data.map(event => event.gameId)).size;
       const stats = data.reduce((acc, event) => {
         switch (event.type) {
