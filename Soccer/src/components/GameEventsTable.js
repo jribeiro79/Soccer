@@ -47,7 +47,7 @@ function GameEventsTable({ gameId }) {
       setPlayers(playersMap);
     })
     .catch(error => console.error('Erro ao buscar jogadores:', error));
-  }, [gameId]);
+  }, [gameId, API_URL]);
 
   return (
     <TableContainer component={Paper}>

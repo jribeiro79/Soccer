@@ -25,7 +25,7 @@ function EventsTimeline({ gameId }) {
     })
     .then(data => setEvents(data))
     .catch(error => console.error('Erro ao buscar eventos:', error));
-  }, [gameId]);
+  }, [gameId, API_URL]);
 
   useEffect(() => {
     // Buscar todos os jogadores
@@ -47,7 +47,7 @@ function EventsTimeline({ gameId }) {
       setPlayers(playersMap);
     })
     .catch(error => console.error('Erro ao buscar jogadores:', error));
-  }, []);
+  }, [API_URL]);
 
   return (
     <div>

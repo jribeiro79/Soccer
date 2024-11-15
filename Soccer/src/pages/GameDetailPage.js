@@ -76,7 +76,7 @@ function GameDetailPage() {
         setResult({ homeGoals, awayGoals });
       })
       .catch(error => console.error('Error fetching events:', error));
-  }, [teamId, gameId]);
+  }, [teamId, gameId, API_URL]);
 
   const sortedConvocation = convocation && Array.isArray(convocation)
     ? convocation.sort((a, b) => (players[a] || '').localeCompare(players[b] || ''))

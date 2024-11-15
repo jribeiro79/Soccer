@@ -43,7 +43,7 @@ function GameStats({ gameId }) {
       setPlayers(playersMap);
     })
     .catch(error => console.error('Erro ao buscar jogadores:', error));
-  }, [gameId]);
+  }, [gameId, API_URL]);
 
   useEffect(() => {
     // Calcular estatísticas por jogador

@@ -22,7 +22,7 @@ function HomePage() {
     .then(response => response.json())
     .then(data => setTeams(data))
     .catch(error => console.error('Erro ao buscar equipas:', error));
-  }, []);
+  }, [API_URL]);
 
   const handleCreateTeam = () => {
     navigate('/create-team');

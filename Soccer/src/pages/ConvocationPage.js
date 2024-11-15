@@ -39,7 +39,7 @@ function ConvocationPage() {
       }
     })
     .catch(error => console.error('Error fetching game convocation:', error));
-  }, [teamId, gameId]);
+  }, [teamId, gameId, API_URL]);
 
   const handleCheckboxChange = (playerId) => {
     setSelectedPlayers(prevSelectedPlayers => {

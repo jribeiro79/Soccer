@@ -22,7 +22,7 @@ function GameSummary({ gameId, opponentName }) {
       .then(response => response.json())
       .then(data => setEventTypes(data))
       .catch(error => console.error('Error fetching distinct event types:', error));
-  }, [gameId]);
+  }, [gameId, API_URL]);
 
   useEffect(() => {
     fetch(`${API_URL}/events/game/${gameId}`, {
@@ -42,7 +42,7 @@ function GameSummary({ gameId, opponentName }) {
         setSummary(summary);
       })
       .catch(error => console.error('Error fetching events:', error));
-  }, [gameId, eventTypes]);
+  }, [gameId, eventTypes, API_URL]);
 
   useEffect(() => {
     fetch(`${API_URL}/events/game/${gameId}/player-event-details`, {
@@ -55,7 +55,7 @@ function GameSummary({ gameId, opponentName }) {
       .then(response => response.json())
       .then(data => setDetailedStats(data))
       .catch(error => console.error('Error fetching detailed player stats:', error));
-  }, [gameId]);
+  }, [gameId, API_URL]);
 
   const renderAccordionDetails = (eventType) => {
     const eventDetails = detailedStats[eventType];

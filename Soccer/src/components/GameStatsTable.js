@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 function GameStatsTable({ gameId }) {
   const [stats, setStats] = useState({});
@@ -45,7 +45,7 @@ function GameStatsTable({ gameId }) {
       setPlayers(playersMap);
     })
     .catch(error => console.error('Erro ao buscar jogadores:', error));
-  }, [gameId]);
+  }, [gameId, API_URL]);
 
   return (
     <TableContainer component={Paper}>

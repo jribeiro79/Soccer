@@ -123,7 +123,7 @@ function PlayerPage() {
       setStats(stats);
     })
     .catch(error => console.error('Error fetching events:', error));
-  }, [playerId]);
+  }, [playerId, API_URL]);
 
   const handlePositionChange = () => {
     fetch(`${API_URL}/players/${playerId}`, {

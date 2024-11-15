@@ -32,7 +32,7 @@ function GamePage() {
       setEvents(data.events);
     })
     .catch(error => console.error('Error fetching game:', error));
-  }, [gameId]);
+  }, [gameId, API_URL]);
 
   const handleEventAdded = async (newEvent) => {
     await fetch(`${API_URL}/games/${gameId}/events`, {

@@ -25,7 +25,7 @@ function PlayerStats({ gameId, playerId }) {
     })
     .then(data => setStats(data))
     .catch(error => console.error('Erro ao buscar estatísticas:', error));
-  }, [gameId, playerId]);
+  }, [gameId, playerId, API_URL]);
 
   return (
     <div>

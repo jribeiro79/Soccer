@@ -26,7 +26,7 @@ function PlayerGameEventsTable({ gameId, playerId, showActions = false, onEventR
     })
     .then(data => setEvents(data))
     .catch(error => console.error('Erro ao buscar eventos:', error));
-  }, [gameId, playerId]);
+  }, [gameId, playerId, API_URL]);
 
   useEffect(() => {
     fetchEvents();

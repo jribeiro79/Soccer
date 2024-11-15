@@ -33,7 +33,7 @@ function GamePlayerPage() {
       })
       .then((data) => setPlayer(data))
       .catch((error) => console.error('Error fetching player:', error));
-  }, [playerId, gameId, teamId]);
+  }, [playerId, gameId, teamId, API_URL]);
 
   const handleEventAdded = () => {
     if (refreshEventsRef.current) {

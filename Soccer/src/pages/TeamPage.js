@@ -33,7 +33,7 @@ function TeamPage() {
       .then((response) => response.json())
       .then((data) => setGames(Array.isArray(data) ? data : []))  // Garantir que games é sempre um array
       .catch((error) => console.error('Error fetching games:', error));
-  }, [teamId]);
+  }, [teamId, API_URL]);
 
   const handleCreateGame = () => {
     navigate(`/team/${teamId}/create-game`);

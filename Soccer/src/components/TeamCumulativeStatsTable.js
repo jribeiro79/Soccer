@@ -32,7 +32,7 @@ function TeamCumulativeStatsTable({ teamId }) {
       setDetailedStats(data);
     })
     .catch(error => console.error('Erro ao buscar detalhes dos eventos:', error));
-  }, [teamId]);
+  }, [teamId, API_URL]);
 
   return (
     <TableContainer component={Paper}>

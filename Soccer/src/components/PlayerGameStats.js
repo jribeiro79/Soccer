@@ -23,7 +23,7 @@ function PlayerGameStats({ playerId, gameId }) {
     })
     .then(data => setEvents(data))
     .catch(error => console.error('Erro ao buscar eventos:', error));
-  }, [playerId, gameId]);
+  }, [playerId, gameId, API_URL]);
 
   useEffect(() => {
     // Calcular estatísticas
