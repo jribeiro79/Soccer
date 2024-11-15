@@ -103,12 +103,12 @@ function GameDetailPage() {
       </Box>
       <Grid container spacing={3}>
         <Grid item xs={12} md={4}>
-          <ConvocationList convocation={sortedConvocation} players={players} gameId={gameId} teamId={teamId} />
+          <ConvocationList convocation={sortedConvocation} players={players} gameId={gameId} teamId={teamId} opponentName={game?.opponentName} />
         </Grid>
         <Grid item xs={12} md={4}>
           <Card>
             <CardContent>
-              <GameSummary gameId={gameId} />
+              <GameSummary gameId={gameId} opponentName={game?.opponentName || 'Unknown'} />
             </CardContent>
           </Card>
         </Grid>

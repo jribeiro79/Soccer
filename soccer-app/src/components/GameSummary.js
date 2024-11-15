@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Box, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Box, Accordion, AccordionSummary, AccordionDetails, IconButton } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import GetAppIcon from '@mui/icons-material/Addchart';
+import { exportToExcel } from '../utils/ExcelExport'; 
 
-function GameSummary({ gameId }) {
+function GameSummary({ gameId, opponentName }) {
   const [summary, setSummary] = useState({});
-  const [eventTypes, setEventTypes] = useState({});
   const [detailedStats, setDetailedStats] = useState({});
+  const [eventTypes, setEventTypes] = useState([]);
 
   const API_URL = process.env.REACT_APP_API_URL;
 
@@ -57,7 +59,6 @@ function GameSummary({ gameId }) {
 
   const renderAccordionDetails = (eventType) => {
     const eventDetails = detailedStats[eventType];
-    console.log('Event details for', eventType, ':', eventDetails);
     if (!Array.isArray(eventDetails)) {
       return <Typography>Nenhum detalhe encontrado para {eventType}</Typography>;
     }
@@ -84,11 +85,42 @@ function GameSummary({ gameId }) {
     );
   };
 
+  const handleExcelExport = () => {
+    const dataObject = [];
+
+    Object.entries(summary).forEach(([eventType, total]) => {
+      const masterRow = {
+        Evento: eventType,
+        Total: total
+      };
+      dataObject.push(masterRow);
+
+      if (detailedStats[eventType]) {
+        detailedStats[eventType].forEach(detail => {
+          const detailRow = {
+            Evento: '',
+            Total: '',
+            Jogador: detail.playerName,
+            'Contagem do Jogador': detail.count
+          };
+          dataObject.push(detailRow);
+        });
+      }
+    });
+
+    exportToExcel(dataObject, `Stats Game GDA vs ${opponentName}`);
+  };
+
   return (
     <Box>
-      <Typography variant="h6" gutterBottom>
-        Resumo do Jogo
-      </Typography>
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Typography variant="h6" gutterBottom>
+          Resumo do Jogo
+        </Typography>
+        <IconButton onClick={handleExcelExport}>
+          <GetAppIcon />
+        </IconButton>
+      </Box>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
