@@ -24,12 +24,12 @@
     "xlsx": "^0.18.5"
   },
   "scripts": {
-  "start": "react-scripts start",
-  "build": "react-scripts build --no-eslint",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "homepage": "https://jribeiro79.github.io/Soccer/",
   "eslintConfig": {
@@ -51,6 +51,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
     "gh-pages": "^6.2.0"
   }
 }
